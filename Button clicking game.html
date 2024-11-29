@@ -30,6 +30,8 @@
 		</style>
 
 <script>
+	var clickcount = 0 ;
+
 	function createButton(){
 		var button = document.createElement("button");
 		button.innerHTML= "Click here";
@@ -42,13 +44,32 @@
     button.style.left = xc + "px";  
     button.style.top = yc + "px";   
 
-        button.onclick = function() {
-        document.body.removeChild(button);
-        createButton();
-    }
-
+    button.onclick = function() {
+        clickcount++;
+        if (clickcount === 5){
+        		ShowGif();
+        		clickcount = 0
+        	}
+        else {
+        	document.body.removeChild(button);
+        	createButton();
+   		 }
+ 	};
+     
 		document.body.appendChild(button);
 	}
+
+	function ShowGif() {
+		var gif = document.createElement("img")
+		gif.src ="..."
+		gif.style.position = "absolute"
+		gif.style.left = "50%"
+		gif.style.top = "50%"
+		document.body.appendChild(gif)
+	}
+
+
+
 	createButton();
 	
 </script>
