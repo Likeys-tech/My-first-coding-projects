@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Button Clicking Game </title>
+</head>
+
+<body>
+	<h1> Button Clicking Game </h1>
+	<style> 
+		h1 {
+			text-align: center;
+			font-size: 25px;
+		}
+	</style>
+	<h2> Its not that deep</h2>
+		<style>
+			h2 {
+				font-size: 15px;
+				color: #ae02ff ;
+				text-align: center;
+			}
+			button {
+				width: 70px;
+				height: 30px;
+				font-size: 11px;
+			}
+			body {
+				background-color:#fff7e6;
+			}
+		</style>
+
+<script>
+	var clickcount = 0 ;
+
+	function createButton(){
+		var button = document.createElement("button");
+		button.innerHTML= "Click here";
+		var MaxX = window.innerWidth - 70;
+		var MaxY = window.innerHeight- 30; 
+		var xc = Math.floor(Math.random() * MaxX);
+		var yc = Math.floor(Math.random() * MaxY);
+
+   button.style.position = "absolute";  
+    button.style.left = xc + "px";  
+    button.style.top = yc + "px";   
+
+    button.onclick = function() {
+        clickcount++;
+        if (clickcount === 5){
+        		ShowGif();
+        		clickcount = 0
+        	}
+        else {
+        	document.body.removeChild(button);
+        	createButton();
+   		 }
+ 	};
+     
+		document.body.appendChild(button);
+	}
+
+	function ShowGif() {
+		var gif = document.createElement("img")
+		gif.src ="Coding/congrats.gif"
+		gif.style.position = "absolute"
+		gif.style.left = "50%"
+		gif.style.top = "50%"
+		document.body.appendChild(gif)
+	}
+
+
+
+	createButton();
+	
+</script>
+</body>
+</html>
